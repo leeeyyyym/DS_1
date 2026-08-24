@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>데이터 과학 2~5차시</title>
+  <style>
+    *{box-sizing:border-box}
+    :root{
+      --bg:#fff9fb;
+      --text:#403946;
+      --muted:#7b7380;
+      --line:#eee4ec;
+      --violet:#8b72e8;
+      --pink:#ffdfea;
+      --mint:#dcf7ef;
+      --sky:#e8f4ff;
+      --yellow:#fff3c8;
+      --card:#fff;
+    }
+    body{
+      margin:0;
+      font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,221,234,.55), transparent 24%),
+        radial-gradient(circle at 86% 12%, rgba(220,247,239,.50), transparent 22%),
+        var(--bg);
+    }
+    .wrap{
+      width:min(1120px,92%);
+      margin:0 auto;
+      padding:54px 0 64px;
+    }
+    .hero{
+      background:rgba(255,255,255,.92);
+      border:1px solid #f1e7ee;
+      border-radius:28px;
+      padding:38px;
+      box-shadow:0 14px 34px rgba(101,78,112,.08);
+      margin-bottom:26px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--pink),#f2ecff);
+      color:#6b56c4;
+      font-weight:900;
+      font-size:13px;
+    }
+    h1{
+      margin:15px 0 8px;
+      font-size:38px;
+      line-height:1.2;
+      letter-spacing:-.03em;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:17px;
+    }
+    .flow{
+      margin-top:24px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .flow-chip{
+      padding:10px 13px;
+      border-radius:12px;
+      background:#fffafd;
+      border:1px solid var(--line);
+      font-size:13px;
+      font-weight:800;
+    }
+    .arrow{color:#aaa0ad;font-weight:900}
+
+    .section-title{
+      margin:28px 0 14px;
+      font-size:19px;
+      font-weight:900;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+    .card{
+      position:relative;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:24px;
+      box-shadow:0 10px 26px rgba(103,81,113,.06);
+      text-decoration:none;
+      color:inherit;
+      transition:.18s ease;
+      overflow:hidden;
+    }
+    .card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 16px 34px rgba(103,81,113,.10);
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      width:110px;height:110px;
+      border-radius:50%;
+      right:-35px;top:-40px;
+      opacity:.5;
+    }
+    .c2::after{background:var(--pink)}
+    .c3::after{background:var(--mint)}
+    .c4::after{background:var(--sky)}
+    .c5::after{background:var(--yellow)}
+    .topline{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      position:relative;
+      z-index:2;
+    }
+    .lesson-no{
+      width:42px;height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#f1ecff;
+      color:var(--violet);
+      font-weight:900;
+      font-size:18px;
+    }
+    .type{
+      padding:5px 9px;
+      border-radius:999px;
+      background:#f8f5fa;
+      color:#776d7b;
+      border:1px solid #eee5ec;
+      font-size:12px;
+      font-weight:900;
+    }
+    .card h2{
+      position:relative;
+      z-index:2;
+      margin:18px 0 7px;
+      font-size:22px;
+      line-height:1.35;
+    }
+    .question{
+      position:relative;
+      z-index:2;
+      color:#655b68;
+      font-weight:800;
+      margin-bottom:15px;
+    }
+    .summary{
+      position:relative;
+      z-index:2;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.65;
+    }
+    .go{
+      position:relative;
+      z-index:2;
+      margin-top:18px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:#6d59c9;
+      font-weight:900;
+      font-size:14px;
+    }
+
+    .next-box{
+      margin-top:24px;
+      padding:20px 22px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#eef7ff,#f5f0ff);
+      border:1px solid #dcd9f4;
+    }
+    .next-box strong{display:block;margin-bottom:5px}
+    .next-box span{color:#6f6774}
+
+    .footer{
+      margin-top:24px;
+      text-align:center;
+      font-size:13px;
+      color:#8a818d;
+    }
+
+    @media(max-width:760px){
+      .cards{grid-template-columns:1fr}
+      h1{font-size:31px}
+      .hero{padding:28px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="badge">🌷 데이터 과학 · 2~5차시</div>
+      <h1>서비스 속 데이터에서<br>데이터 분석으로</h1>
+      <p>
+        생활 속 서비스에서 어떤 데이터가 쓰이는지 살펴보고,
+        데이터를 구체화하고 생성·수집 과정을 이해한 뒤,
+        개인 보고서에서 활용 방법과 확장 아이디어를 정리하고 Pandas 분석으로 이어집니다.
+      </p>
+
+      <div class="flow">
+        <div class="flow-chip">2차시 · 서비스 속 데이터</div>
+        <div class="arrow">→</div>
+        <div class="flow-chip">3~4차시 · 데이터 구체화·수집</div>
+        <div class="arrow">→</div>
+        <div class="flow-chip">5차시 · 개인 보고서</div>
+        <div class="arrow">→</div>
+        <div class="flow-chip">6차시 · 데이터셋 + Pandas</div>
+      </div>
+    </section>
+
+    <div class="section-title">차시 선택</div>
+
+    <section class="cards">
+      <a class="card c2" href="lesson02.html">
+        <div class="topline"><div class="lesson-no">2</div><div class="type">팀 활동</div></div>
+        <h2>서비스 속 데이터 찾기</h2>
+        <div class="question">“이 서비스에는 어떤 데이터가 있을까?”</div>
+        <div class="summary">선정한 서비스를 바탕으로 서비스 속 데이터에 대한 생각을 시작합니다. 앱 선정까지만 마친 조도 다음 3~4차시 활동에서 충분히 이어갈 수 있습니다.</div>
+        <div class="go">2차시 열기 →</div>
+      </a>
+
+      <a class="card c3" href="lesson03.html">
+        <div class="topline"><div class="lesson-no">3~4</div><div class="type">팀 활동 · 이젤패드</div></div>
+        <h2>주요 기능과 데이터를 구체화하고 수집 과정 살펴보기</h2>
+        <div class="question">“어떤 기능에 어떤 데이터가 필요하고, 그 값은 어떻게 만들어질까?”</div>
+        <div class="summary">이젤패드와 포스트잇을 이용해 앱에서 할 수 있는 일을 꼬리잡기로 확장하고, 주요 기능 선정 → 관련 데이터 → 구체적인 데이터 항목 → 생성·수집 방식까지 조별로 정리합니다.</div>
+        <div class="go">3~4차시 열기 →</div>
+      </a>
+
+      <a class="card c5" href="lesson05.html">
+        <div class="topline"><div class="lesson-no">5</div><div class="type">개인 보고서</div></div>
+        <h2>서비스의 데이터 활용을 해석하고 확장하기</h2>
+        <div class="question">“이 서비스는 데이터를 어떻게 활용하며, 나는 이를 어떻게 확장할 수 있을까?”</div>
+        <div class="summary">서비스 선정 이유, 데이터 식별, 활용 방법, 핵심 데이터 판단, 확장 아이디어를 하나의 개인 보고서로 완성합니다.</div>
+        <div class="go">5차시 열기 →</div>
+      </a>
+    </section>
+
+    <section class="next-box">
+      <strong>🚀 다음 단계 · 6차시</strong>
+      <span>
+        6차시 시작에서 여러 기록이 행과 열로 쌓인 데이터셋의 구조를 간단히 이해한 뒤, Pandas로 실제 데이터를 확인하고 분석합니다.
+      </span>
+    </section>
+
+    <div class="footer">
+      각 차시 페이지의 작성 내용은 해당 브라우저에 임시 저장됩니다.
+    </div>
+  </main>
+</body>
+</html>
